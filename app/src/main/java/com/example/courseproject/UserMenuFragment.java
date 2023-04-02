@@ -2,11 +2,19 @@ package com.example.courseproject;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +31,7 @@ public class UserMenuFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private RecyclerView rcvMenu;
 
     public UserMenuFragment() {
         // Required empty public constructor
@@ -60,5 +69,25 @@ public class UserMenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_user_menu, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        rcvMenu = view.findViewById(R.id.rv_menu);
+        rcvMenu.setLayoutManager(new LinearLayoutManager(getContext()));
+        rcvMenu.setHasFixedSize(true);
+        MenuAdapter menuAdapter = new MenuAdapter(getContext(), dataInit());
+        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+        rcvMenu.addItemDecoration(itemDecoration);
+        rcvMenu.setAdapter(menuAdapter);
+        menuAdapter.notifyDataSetChanged();
+    }
+
+    private List<Pizza> dataInit() {
+        List list = new ArrayList();
+        for(int i=1; i<=20; i++)
+            list.add(new Pizza("Pizza 1", "", "", 4, 50, i));
+        return list;
     }
 }
