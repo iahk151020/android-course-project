@@ -63,7 +63,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             tvItemName = itemView.findViewById(R.id.tv_itemName);
             ratingBar = itemView.findViewById(R.id.rb_item);
             itemLayout = itemView.findViewById(R.id.itemLayout);
-//            ratingBar.setEnabled(false);
+            ratingBar.setEnabled(false);
         }
     }
 }
