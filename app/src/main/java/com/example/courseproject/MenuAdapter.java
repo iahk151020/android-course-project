@@ -43,7 +43,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         holder.itemLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent in = new Intent()
+                Intent in = new Intent(context, ItemDetailsActivity.class);
+                context.startActivity(in);
             }
         });
     }
