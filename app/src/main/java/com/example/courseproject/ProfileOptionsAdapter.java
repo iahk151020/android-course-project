@@ -42,6 +42,11 @@ public class ProfileOptionsAdapter extends RecyclerView.Adapter<ProfileOptionsAd
         holder.clProfileOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                switch (position){
+                    case 0:
+                        Intent in = new Intent(context, CartActivity.class);
+                        context.startActivity(in);
+                }
             }
         });
     }
